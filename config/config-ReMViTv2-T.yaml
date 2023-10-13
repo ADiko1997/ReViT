@@ -1,0 +1,125 @@
+TRAIN:
+  enable: True
+  dataset: "imagenet"
+  batch_size: 256
+  eval_period: 5
+  auto_resume: True
+  checkpoint_path: "/"
+  mixed_precision: True
+
+AUG:
+  num_samples: 1
+  color_jitter: 0.4
+  AA_TYPE: "rand-m9-n6-mstd0.5-inc1"
+  interpolation: "bicubic"
+  re_prob: 0.25
+  re_mode: "pixel"
+  re_count: 1
+  re_split: False 
+
+MIXUP:
+  enable: True
+  mixup_alpha: 0.8
+  cutmix_alpha: 1.0
+  mixup_prob: 1.0
+  switch_prob: 0.5
+  labels_smooth_value: 0.1
+
+TEST:
+  enable: False
+  dataset: 'imagenet'
+  batch_size: 64
+  checkpoint_file: "/"
+
+MODEL:
+  name: "ReMViTv2"
+  num_classes: 1000
+  loss_func: "soft_cross_entropy"
+  loss_func_val: "cross_entropy"
+  dropout_rate: 0.0
+  head_act: "softmax"
+  act_checkpoint: False
+
+ReViT:
+  mode: "conv"
+  pool_first: False
+  patch_kernel: [7, 7]
+  patch_stride: [4, 4]
+  patch_padding: [3, 3]
+  embed_dim: 96
+  num_heads: 1
+  mlp_ratio: 4
+  qkv_bias: True
+  drop_path: 0.1
+  depth: 10
+  dim_mul: [[1, 2.0], [3, 2.0], [8, 2.0]]
+  head_mul: [[1, 2.0], [3, 2.0], [8, 2.0]]
+  pool_qkv_kernel: [3, 3]
+  pool_kv_stride_adaptive: [4, 4]
+  pool_q_stride: [[0, 1, 1], [1, 2, 2], [2, 1, 1], [3, 2, 2], [4, 1, 1], [5, 1, 1], [6, 1, 1], [7, 1, 1], [8, 2, 2], [9, 1, 1]]
+  zero_decay_pos: False
+  use_abs_pos: False
+  use_rel_pos: True
+  rel_pos_zero_init: False
+  residual_pooling: True
+  dim_mul_in_att: True
+  alpha: True
+  visualize: True
+  cls_embed_on: False
+
+DATA:
+  path: "/workspace/data"
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  crop_size: 224
+  VAL_CROP_RATIO: 0.875
+
+SOLVER:
+  base_lr: 0.00025
+  lr_policy: "cosine"
+  cosine_end_lr: 0.00001
+  lrs: []
+  step_size: 1
+  steps: 300
+  max_epochs: 300
+  momentum: 0.9
+  dampening: 0.0
+  nesterov: False
+  weight_decay: 0.05
+  warmup_factor: 0.1
+  warmup_epochs: 70
+  warmup_start_lr: 0.00001
+  optimizing_method: "adamw"
+  cosine_after_warmup: True
+  zero_wd_1D_param: True
+  clip_grad_val: False
+  clip_grad_l2norm: 1.0
+  layer_wise_decay: 1.0
+  load: True
+  start_epoch: 0
+  summary: "/workspace/summary"
+  fine_tune: False
+  dist: True
+  load_path: "/path_to_ckpt"
+  checkpoint_path: "/path_to_save_ckpt"
+  save: True
+  accumulate: True
+  accumulate_steps: 8
+  log_period: 1
+  log_model_info: False
+  dist_backend: "nccl"
+
+DATALOADER:
+  num_worker: 8
+  pin_memory: True
+
+DEVICE:
+  num_gpu: 2
+  num_shards: 1
+  shard_id: 0
+  output_dir: "/"
+  rng_seed: 0
+  log_period: 1
+  log_model_info: False
+  dist_backend: "nccl"
+

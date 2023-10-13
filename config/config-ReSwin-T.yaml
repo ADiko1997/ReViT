@@ -1,0 +1,113 @@
+TRAIN:
+  enable: False
+  dataset: "imagenet"
+  batch_size: 256
+  eval_period: 5
+  auto_resume: True
+  checkpoint_path: "/"
+  mixed_precision: True
+
+AUG:
+  num_samples: 1
+  color_jitter: 0.4
+  AA_TYPE: "rand-m9-n6-mstd0.5-inc1"
+  interpolation: "bicubic"
+  re_prob: 0.1
+  re_mode: "pixel"
+  re_count: 1
+  re_split: False 
+
+MIXUP:
+  enable: True
+  mixup_alpha: 0.8
+  cutmix_alpha: 0.0
+  mixup_prob: 0.99
+  switch_prob: 0.5
+  labels_smooth_value: 0.1
+
+TEST:
+  enable: False
+  dataset: 'imagenet'
+  batch_size: 64
+  checkpoint_file: "/"
+
+MODEL:
+  name: "ReSwin"
+  num_classes: 1000
+  loss_func: "soft_cross_entropy"
+  loss_func_val: "cross_entropy"
+  dropout_rate: 0.2
+  head_act: "softmax"
+  act_checkpoint: False
+
+ReSwin:
+  patch_size: 4
+  in_chans: 3
+  embed_dim: 96
+  depths: [2, 2, 6, 2]
+  num_heads: [3, 6, 12, 24]
+  windw_size: 7
+  mlp_ratio: 4
+  qkv_bias: True
+  qk_scale: [] 
+  ape: False
+  patch_norm: True
+  drop_rate: 0.0
+  attn_drop_rate: 0.0
+  drop_path: 0.1
+
+
+DATA:
+  path: "/path_to/imagenet"
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  crop_size: 224
+  VAL_CROP_RATIO: 0.91
+
+SOLVER:
+  base_lr: 0.00025
+  lr_policy: "cosine"
+  cosine_end_lr: 0.00001
+  lrs: []
+  step_size: 1
+  steps: 300
+  max_epochs: 300
+  momentum: 0.9
+  dampening: 0.0
+  nesterov: False
+  weight_decay: 0.05
+  warmup_factor: 0.1
+  warmup_epochs: 20
+  warmup_start_lr: 0.00001
+  optimizing_method: "adamw"
+  cosine_after_warmup: True
+  zero_wd_1D_param: True
+  clip_grad_val: False
+  clip_grad_l2norm: False
+  layer_wise_decay: 1.0
+  load: True
+  start_epoch: 0
+  summary: False
+  fine_tune: False
+  dist: True
+  load_path: "/load_ckpt_path"
+  checkpoint_path: "/save_ckpt_path"
+  save: False
+  accumulate: True
+  accumulate_steps: 4
+
+DEVICE:
+  num_gpu: 1
+  num_shards: 1
+  shard_id: 0
+  output_dir: "/"
+  rng_seed: 0
+  log_period: 1
+  log_model_info: False
+  dist_backend: "nccl"
+
+DATALOADER:
+  num_worker: 8
+  pin_memory: True
+
+

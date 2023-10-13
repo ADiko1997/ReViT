@@ -1,0 +1,13 @@
+#Build dokcer with uname/project:tag 
+#Note: the context is at docker parent directory (run the build command only at Docker dir)
+
+docker build -f ./Dockerfile  -t docker_repo/repo_name:tag .
+
+#Docker run interactively
+docker run -it -rm --user $(id -u):$(id -g) --shm-size=1024M --gpus all -v $PWD:/etc/project -p 8888:8888  docker_repo/repo_name:tag
+
+#Start Jupyter notebook
+jupyter-notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
+
+#directly start jupyter-notebook
+docker run -it -rm --user $(id -u):$(id -g) --shm-size=1024M --gpus all -v $PWD:/workspace/code docker_repo/repo_name:tag /bin/bash -c "jupyter-notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root"

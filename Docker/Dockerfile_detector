@@ -1,0 +1,43 @@
+FROM nvcr.io/nvidia/pytorch:22.02-py3
+# FROM nvcr.io/nvidia/pytorch:22.07-py3
+ARG DEBIAN_FRONTEND=noninteractive
+
+#Install os Requirements
+
+ADD os_requirements.txt .
+RUN apt update -y && apt install -y $(cat os_requirements.txt|grep -v '#')
+
+# Install Python packages (from requirements.txt):
+
+ADD requirements.txt .
+# RUN pip install "opencv-python-headless<4.3"
+RUN pip install -r requirements.txt
+
+
+#Taken from https://u.group/thinking/how-to-put-jupyter-notebooks-in-a-dockerfile/ on how to enable jupyter on docker
+RUN pip install jupyter 
+ENV TINI_VERSION v0.6.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+RUN chmod +x /usr/bin/tini
+# RUN pip install --upgrade torchvision
+
+#install appex and mmlab packages
+RUN pip install torch==1.10.0+cu111 torchvision==0.11.0+cu111 torchaudio==0.10.0 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip install -U openmim
+RUN mim install mmcv-full==1.3.18
+RUN pip install mmdet
+
+
+ARG UNAME=user
+ARG GID=1000
+ARG UID=1000
+RUN groupadd -g $GID $UNAME
+RUN useradd -m -u $UID -g $GID -s /bin/bash $UNAME
+
+RUN chmod -R 777 /workspace
+RUN chmod -R 777 /home
+USER $UNAME
+
+# ENTRYPOINT ["/usr/bin/tini", "--"]
+
+# CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
