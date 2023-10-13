@@ -9,7 +9,7 @@ ReViT is transformer architecture that exploits residual attention learning and 
 
 > **Image Classification**: Included in this repo.
 
-> **Object Detection and Instance Segmentation**: Implemented using mmdetection (https://github.com/open-mmlab/mmdetection)
+> **Object Detection and Instance Segmentation**: Implemented using mmdetection (https://github.com/open-mmlab/mmdetection) (Contact diko@di.uniroma1.it for code and weights)
 
 # Results and Pre-trained Models
 ### ImageNet-1K trained models
