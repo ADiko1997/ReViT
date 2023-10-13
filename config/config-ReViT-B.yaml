@@ -18,7 +18,7 @@ AUG:
   re_split: False 
 
 MIXUP:
-  enable: True
+  enable: False
   mixup_alpha: 0.8
   cutmix_alpha: 1.0
   mixup_prob: 1.0
