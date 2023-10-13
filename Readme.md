@@ -1,4 +1,4 @@
-# [ReViT: Enhancing Vision Transformers with Attention Residual Connections for Visual Recognition]
+# ReViT: Enhancing Vision Transformers with Attention Residual Connections for Visual Recognition
 
 Official PyTorch implementation of **ReViT**
 
