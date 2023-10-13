@@ -16,9 +16,9 @@ ReViT is transformer architecture that exploits residual attention learning and 
 
 | name | resolution |acc@1 | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:| :---:|
-| ReViT-B | 224x224 | 82.4 | 86M | 17.5G | model |
-| ReMViTv2-T | 224x224 | 82.7 | 24M | 4.7G | model |
-| ReSwin-T | 224x224 | 81.5 | 29M | 4.5G |  model |
+| ReViT-B | 224x224 | 82.4 | 86M | 17.5G | [model](https://drive.google.com/file/d/1U8-a3yw1HPcPscm6eTiROxyJJlwfzy6h/view?usp=drive_link) |
+| ReMViTv2-T | 224x224 | 82.7 | 24M | 4.7G | [model] (https://drive.google.com/file/d/1cBUzW7wJ1GUpd1CEgL_cSGd26b4s7U4d/view?usp=drive_link) |
+| ReSwin-T | 224x224 | 81.5 | 29M | 4.5G |  [model] (https://drive.google.com/file/d/14Wronoy-Bm-m9BJwHXgjDYJNTOouj_m5/view?usp=drive_link) |
 
 # Installation
 
