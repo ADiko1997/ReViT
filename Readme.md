@@ -34,9 +34,8 @@ python main.py \
   --config_path config/config-ReViT-B.yaml \
   --num_gpus 2 \
 ```
-To customize any hyperparemeter please check the config/config-ReViT-B.yaml file. Additionally, we suggest training on multiple GPUs to reproduce the same results as those reported in the above.
-NOTE: Training ReViT on 2 V100 GPUs takes around 9 days and around 15 days with one GPU. To reproduce the results 2 V100 GPUs of 32GB are needed.
-In order to run ReSwin and ReMViTv2 change the config-ReViT-B.yaml file with the appropriate one found in config. Both models would date around 9 days to train on 2 GPUs.
+To customize any hyperparemeter please check the config/config-ReViT-B.yaml file. Additionally, we suggest training on multiple GPUs to have improved results compared to those reported in the above.
+NOTE: Training ReViT on 2 V100 GPUs takes around 9 days and around 15 days with one GPU. 
 
 # Evaluation
 
