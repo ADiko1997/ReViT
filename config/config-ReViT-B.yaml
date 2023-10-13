@@ -62,7 +62,7 @@ ReViT:
   use_rel_pos: False
   rel_pos_zero_init: False
   residual_pooling: False
-  dim_mul_in_att: True
+  dim_mul_in_att: False
   alpha: True
   visualize: True
   cls_embed_on: False
@@ -91,7 +91,7 @@ SOLVER:
   warmup_factor: 0.1
   warmup_epochs: 30
   warmup_start_lr: 0.0000001
-  optimizing_method: "adamw"
+  optimizing_method: "adam"
   cosine_after_warmup: True
   zero_wd_1D_param: True
   clip_grad_val: False
