@@ -10,6 +10,7 @@ ReViT is transformer architecture that exploits residual attention learning and 
 > **Image Classification**: Included in this repo.
 
 > **Object Detection and Instance Segmentation**: Implemented using mmdetection (https://github.com/open-mmlab/mmdetection) (Contact diko@di.uniroma1.it for code and weights)
+We build our model on top of [mvitv2](https://github.com/facebookresearch/mvit) soure code for ReMViTv2 and [TIMM](https://github.com/huggingface/pytorch-image-models/blob/main/timm/models/swin_transformer.py) for ReSwin.
 
 # Results and Pre-trained Models
 ### ImageNet-1K trained models
