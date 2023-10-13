@@ -93,3 +93,5 @@ Note that in config/config-ReViT-B.yaml a training flag is found and has to be s
 ```
 
 
+# License
+The software is release for research use only under the [MIT License](./License.txt)
