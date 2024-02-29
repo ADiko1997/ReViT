@@ -3,6 +3,7 @@
 Official PyTorch implementation of **ReViT**
 
 ![Alt text](./ReViT-1.png)
+(https://arxiv.org/pdf/2402.11301.pdf [arxiv])
 
 ---
 ReViT is transformer architecture that exploits residual attention learning and serves as a general vision backbone for different visual recognition tasks:
